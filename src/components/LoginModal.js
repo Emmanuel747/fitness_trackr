@@ -1,4 +1,4 @@
-import Image3 from "../assets/running_bg.jpg";
+import Image from "../assets/running_bg.jpg";
 import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { getToken, login } from "../auth";
@@ -8,7 +8,7 @@ const LoginModal = ({
   setLoginClick,
   registerClick,
   setRegisterClick,
-  authenticate,
+  auth,
   setAuthentication,
   username,
   setUsername,
@@ -16,14 +16,14 @@ const LoginModal = ({
   setToken
 
 }) => {
-
+  const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [ password, setPassword ] = useState();
   const [ loginSuccessful, setLoginSuccessful ] = useState(false);
 
   function authentication(event) {
     event.preventDefault();
       fetch(
-        "REACT_APP_FITNESS_TRACKER_API_URL/api/users/login",
+        `${REACT_APP_FITNESS_TRACKER_API_URL}/api/users/login`,
         {
           method: "POST",
           headers: {
@@ -50,6 +50,7 @@ const LoginModal = ({
       console.log("is logged in");
       setAuthentication(true);
       setLoginSuccessful(true);
+      //Need something cleaner than alerts
       alert(result.message)
     } else {
       console.log("not logged in")
@@ -57,7 +58,7 @@ const LoginModal = ({
     }
   }; 
 
-  if (loginSuccessful && authenticate) {
+  if (loginSuccessful && auth) {
     return <Redirect to="/myroutines" />;
   } 
 
@@ -80,18 +81,18 @@ const LoginModal = ({
         <div className="modal-content">
           <span onClick={close_btn} className="close-btn">&times;</span>
           <div className="modal-content-left">
-            <img src={Image3} alt="Working Out" id="modal-img" />
+            <img src={Image} alt="Work Out" id="modal-img" />
           </div>
           <div className="modal-content-right">
             <form action="/" method="GET" className="modal-form" id="form" onSubmit={ authentication }>
-              <h1>Let's Get to it!</h1>
+              <h1>Take the First Step!</h1>
               <div className="form-validation">
                 <input
                   type="text"
                   className="modal-input"
                   id="username"
                   name="username"
-                  placeholder="Enter your username"
+                  placeholder="Create a Username"
                   onChange={(event) => {
                     setUsername(event.target.value);
                   }}
@@ -103,7 +104,7 @@ const LoginModal = ({
                   className="modal-input"
                   id="password"
                   name="password"
-                  placeholder="Enter your password"
+                  placeholder="Create a Password"
                   onChange={(event) => {
                     setPassword(event.target.value);
                   }}

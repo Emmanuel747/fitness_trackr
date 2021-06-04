@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { getToken } from "../auth";
 import CreateActivityForm from "./CreateActivityForm";
 import Image from "../assets/—Pngtree—physical fitness_2210737.png";
-// import URL from ""
-
+// import { REACT_APP_FITNESS_TRACKER_API_URL } = process.env
 const {REACT_APP_FITNESS_TRACKER_API_URL} = process.env;
 
 const Activities = () => {
@@ -29,7 +28,7 @@ const Activities = () => {
           <div className="activities-content">
             <h1> Activities </h1>
             <p>
-              Find your favorite activity and get to it! Or add something new...
+              Find your an activity and just Do it!
             </p>
             <div className="activities-list-container">
             {activities.map((activity, index) => {

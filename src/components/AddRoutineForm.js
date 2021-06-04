@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { getToken } from "../auth";
 import Modal from "react-modal";
-import "./AddModal.css";
 import Image2 from "../assets/badminton fitness little boy.png";
 Modal.setAppElement("#root");
 
+//still working on Needs CSS
 const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
+  const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
@@ -14,7 +15,7 @@ const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
     event.preventDefault();
 
     if (getToken() && authenticate) {
-      fetch("REACT_APP_FITNESS_TRACKER_API_URL/api/routines", {
+      fetch("${REACT_APP_FITNESS_TRACKER_API_URL}/api/routines", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

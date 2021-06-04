@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 :root {
   --errorColor: #f00e0e;
   --validColor: #0add0a;
@@ -7,7 +9,6 @@
   --lightred: #f9433dcc;
   --lightpurple: rgb(201, 199, 255);
   --purplegray: rgb(225, 224, 255);
-  --darkerpurple: rgb(108, 99, 254);
 }
 
 .modal {
@@ -95,7 +96,7 @@
 
 .modal-form h1 {
   font-size: 1.5rem;
-  text-align: start;
+  text-align: center;
   width: 80%;
   margin-bottom: 1rem;
 }
@@ -114,6 +115,7 @@
   height: 2rem;
   width: 100%;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  font-family: 'Roboto', sans-serif;
 }
 
 .modal-input::placeholder {
@@ -138,7 +140,7 @@
 }
 
 .modal-input-login {
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-top: 1rem;
   color: var(--darkerpurple);
   width: 80%;

@@ -5,15 +5,18 @@ import AddRoutineForm from "./AddRoutineForm";
 import UpdateRoutineForm from "./UpdateRoutineForm";
 import AddActivityForm from "./AddActivityForm";
 import UpdateActivityForm from "./UpdateActivityForm";
-const BASE_URL = "https://still-plains-94282.herokuapp.com/api/";
+
+
 
 const MyRoutines = ({ username, setUsername, authenticate }) => {
+  const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [routines, setRoutines] = useState([]);
   const [routinesActive, setRoutinesActive] = useState(true);
   const [activitiesActive, setActivitiesActive] = useState(false);
   const [activities, setActivities] = useState([]);
   const [id, setId] = useState("");
 
+  //Thiis needs the most work, Idk if the API is broken or my URL's are but I rushed through it.
   useEffect(() => {
     const getUserAndSetRoutines = async () => {
       try {
@@ -21,7 +24,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
         const { username } = await responseUser.json();
         setUsername(username);
         const responseRoutines = await fetch(
-          `${BASE_URL}users/${username}/routines`,
+          `${REACT_APP_FITNESS_TRACKER_API_URL}users/${username}/routines`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -39,7 +42,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
   }, []);
 
   const deleteRoutine = (id) => {
-    fetch(`${BASE_URL}/routines/${id}`, {
+    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}/routines/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +62,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
 
   const deleteActivity = (id) => {
     fetch(
-      `REACT_APP_FITNESS_TRACKER_API_URL/api/routine_activities/${id}`,
+      `${REACT_APP_FITNESS_TRACKER_API_URL}/api/routine_activities/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -81,7 +84,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
       .catch(console.error);
   };
 
-  const fitnessDay = new Date().toLocaleDateString();
+  const currentDay = new Date().toLocaleDateString();
 
   return (
     <>
@@ -92,7 +95,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
               <div className="my-routines-header">
                 <div className="user-welcome">
                   <h1>
-                    {username}'s Workout - {fitnessDay}
+                    {username}'s Workout - {currentDay}
                   </h1>
                 </div>
               </div>
@@ -153,7 +156,6 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
                           >
                             Delete Routine
                           </button>
-                          {/* <button onClick={() => updateRoutine(routine.id)}>Update</button> */}
                           {
                             <>
                               <UpdateRoutineForm
@@ -164,8 +166,8 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
                               />
                               <AddActivityForm
                                 id={id}
-                                // activities={activities}
-                                // setActivities={setActivities}
+                                activities={activities}
+                                setActivities={setActivities}
                                 routineId={routine.id}
                                 routines={routines}
                                 setRoutines={setRoutines}

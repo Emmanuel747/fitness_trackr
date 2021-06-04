@@ -1,5 +1,5 @@
 import "./Modal.css";
-import img from "../assets/greenSquat.png";
+import img from "../assets/greenSquat-removebg.png";
 import { useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { login, getToken } from '../auth'
@@ -61,8 +61,8 @@ const RegisterModal = ({
   //   return <Redirect to="/myroutines" />;
   // }
 
-  window.addEventListener("click", (e) => {
-    if (e.target === document.getElementById("register-modal")) {
+  window.addEventListener("click", (event) => {
+    if (event.target === document.getElementById("register-modal")) {
       setRegisterClick(!registerClick);
     }
   });
@@ -88,8 +88,7 @@ const RegisterModal = ({
           <div className="modal-content-right">
             <form className="modal-form" id="form" onSubmit={ createUser }>
               <h1>
-                Get started today! Create your account by filling out the form
-                below.
+                This is a Modal for Logged in user
               </h1>
               <div className="form-validation">
                 <input

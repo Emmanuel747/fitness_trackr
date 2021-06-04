@@ -6,7 +6,7 @@ import Image from "../assets/favicon-32x32.png";
 
 // import Logo from '../../public/favicon-16x16.png';
 
-const Navbar = ({ loginClick, setLoginClick }) => {
+const Navbar = ({ loginClick, setLoginClick, username }) => {
   // const logoImg = <img src="../../public/favicon-16x16.png"/>
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -56,7 +56,7 @@ const Navbar = ({ loginClick, setLoginClick }) => {
             </li>
             {getToken() ? <li className="nav-item">
               <Link to="/myroutines" className="nav-links">
-                <h3>Profile</h3>
+                <h3>Profile[Work in progress]{username}</h3>
               </Link>
             </li> : null}
             {getToken() ? 

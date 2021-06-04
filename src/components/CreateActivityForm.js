@@ -5,13 +5,14 @@ import Image2 from "../assets/badminton fitness little boy.png";
 Modal.setAppElement("#root");
 
 const CreateActivityForm = ({ activities, setActivities }) => {
+  const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function addActivity(event) {
     event.preventDefault();
-    fetch("REACT_APP_FITNESS_TRACKER_API_URL/api/activities", {
+    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}/api/activities`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
