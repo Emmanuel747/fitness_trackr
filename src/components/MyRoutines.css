@@ -1,0 +1,169 @@
+:root {
+  --darkgray: rgb(63, 61, 86);
+  --brightorange: rgb(255, 111, 97);
+  --white: #fff;
+  --lightred: #f9433dcc;
+  --lightpurple: rgb(201, 199, 255);
+  --purplegray: rgb(225, 224, 255);
+  --darkerpurple: rgb(108, 99, 254);
+}
+
+.main-my-routines {
+  background-image: url('../assets/well-guides-4hourmarathon-header-jumbo-v2.gif');
+  background-size: 100vw 100vh;
+}
+
+.my-routines-container {
+  width: 80%;
+  margin: 0 auto;
+  justify-self: center;
+  color: var(--darkgray);
+  height: calc(100vh - 80px);
+}
+
+.my-routines-content {
+  display: grid;
+  grid-template-columns: 1fr; 
+  justify-self: center;
+  margin-left: 20px;
+  color: var(--darkgray);
+  width: 80%;
+  height: 400px;
+  overflow: auto;
+  scrollbar-color: var(--brightorange) transparent;
+  margin-bottom: 1rem;
+}
+
+.my-routines-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--lightpurple);
+  border-radius: 10px;
+  max-height: 350px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.my-routines-header {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.user-welcome {
+  width: 100%;
+  font-size: 2rem;
+  padding: 30px;
+  text-align: center;
+}
+
+.profile-body {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.post-routines, .post-activities {
+  display: none;
+}
+
+.post-routines-active{
+  padding: 50px;
+  display: active;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+
+.nav {
+  width: 100%;
+  z-index: -1;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  height: 40px;
+}
+
+.nav ul li:nth-child(1) {
+  margin-right: 10px;
+}
+
+.nav ul li {
+  padding: 5px 15px;
+  width: 50%;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--brightorange);
+}
+
+.user-routines-active, .user-activities-active {
+  color: var(--white);
+}
+
+.my-routines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+}
+
+.my-routines p {
+  margin-top: 1rem;
+  margin-bottom: 3%;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+}
+
+.my-routines-btn {
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: var(--darkerpurple);
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  color: var(--white);
+  margin-top: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.35s;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+}
+
+.activities-display {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-my-routines {
+    height: 40%;
+  }
+
+  .nav {
+    display: none;
+  }
+}
