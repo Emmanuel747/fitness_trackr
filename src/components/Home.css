@@ -1,0 +1,137 @@
+:root {
+  --darkgray: rgb(63, 61, 86);
+  --brightorange: rgb(255, 111, 97);
+  --white: #fff;
+  --lightred: #f9433dcc;
+  --lightpurple: rgb(201, 199, 255);
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --purplegray: rgb(225, 224, 255);
+  --darkerpurple: rgb(108, 99, 254);
+}
+
+.main {
+  background-image: url('../assets/Relaxition.jpg');
+  background-size: 100vw 100vh;
+}
+
+.main-container {
+  display: grid;
+  /* grid-auto-flow: column; */
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-self: center;
+  width: 65%;
+  margin: 0 auto;
+  height: calc(100vh - 80px);
+}
+
+.main-content {
+  justify-self: center;
+  margin: 12px 20px;
+  text-shadow: 2px 2px 5px black;
+  color: var(--white);
+  width: 80%;
+}
+
+.main-content h1 {
+  font-size: 3.5rem;
+}
+
+.main-content p {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.main-btn {
+  margin-left: 40%;
+  align-self: center;
+  font-size: 1rem;
+  background-color: #F35361;
+  padding: 7px 30px;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all .35s;
+  outline: none;
+  z-index: 1;
+  
+}
+
+.main-btn:after {
+  position: absolute;
+  content: " ";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 101%;
+  transition: all .29s;
+  border-radius: 8px;
+  background: var(--darkerpurple);
+}
+
+.main-btn:hover {
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.main-btn:hover:after {
+  width: 100%;
+}
+
+#main-img {
+  height: 80%;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: auto;
+    justify-self: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .main-content {
+    justify-self: center;
+    color: var(--white);
+    width: 80%;
+    margin: 0;
+    text-align: center;
+
+  }
+
+  .main-content h1 {
+    font-size: 3.5rem;
+ 
+  }
+
+  .main-content p {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+  }
+
+  #main-img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-content {
+    text-align: center;
+    width: 100%;
+  }
+
+  #main-img {
+    display: none;
+  }
+}

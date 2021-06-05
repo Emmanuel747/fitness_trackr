@@ -1,0 +1,108 @@
+:root {
+  --darkgray: rgb(63, 61, 86);
+  --brightorange: rgb(255, 111, 97);
+  --white: #fff;
+  --lightred: #f9433dcc;
+  --lightpurple: rgb(201, 199, 255);
+  --purplegray: rgb(225, 224, 255);
+  --darkerpurple: rgb(108, 99, 254);
+}
+
+.activities {
+  background-image: url('../assets/the_power_of_tomorrow.jpg');
+  background-size: 100vw 100vh;
+}
+
+.activities-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-self: center;
+  width: 90%;
+  margin: 0 auto;
+  height: calc(100vh - 80px);
+}
+
+.activities-content {
+  justify-self: start;
+  margin-left: 10px;
+  color: var(--white);
+  width: 130%;
+  text-shadow: 7px 3px 7px rgba(0, 0, 0, 0.74);
+}
+
+.activities-content h1 {
+  font-size: 3.5rem;
+  text-align: center;
+  letter-spacing: 0.2rem;
+}
+
+.activities-content p {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 4%;
+}
+
+#activities-img {
+  height: 80%;
+  width: 70%;
+  transform: translateX(160px);
+}
+
+.activities-list {
+  font-size: 1.5rem;
+  margin-left: 10%;
+}
+.activities-list-container {
+  height: 400px;
+  overflow: auto;
+  transform: translateX(-25px);
+  scrollbar-color: var(--brightorange) transparent;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1080px) {
+  h1 {
+    padding-top: 10px;
+    text-align: center;
+  }
+  .activities-container {
+    display: grid;
+    grid-template-columns: auto;
+    justify-self: center;
+    width: 90%;
+    margin: 0px 15px;
+  }
+
+  .activities-content {
+    justify-self: center;
+    color: var(--white);
+    width: 80%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .activities-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .activities-content p {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+  }
+
+  #activities-img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .activities-content {
+    text-align: center;
+    width: 100%;
+  }
+
+  #activities-img {
+    display: none;
+  }
+}
