@@ -5,27 +5,24 @@ import Image2 from "../assets/badminton fitness little boy.png";
 Modal.setAppElement("#root");
 
 const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
-  const [ name, setName ] = useState("");
-  const [ goal, setGoal ] = useState("");
-  const [ modalIsOpen, setModalIsOpen ] = useState(false);
+  const [name, setName] = useState("");
+  const [goal, setGoal] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
 
   const updateRoutine = (event) => {
     event.preventDefault();
-    fetch(
-      `${REACT_APP_FITNESS_TRACKER_API_URL}/api/routines/${routineId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${getToken()}`,
-        },
-        body: JSON.stringify({
-          name: name,
-          goal: goal,
-        }),
-      }
-    )
+    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/routines/${routineId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`,
+      },
+      body: JSON.stringify({
+        name: name,
+        goal: goal,
+      }),
+    })
       .then((response) => response.json())
       .then((result) => {
         if (result) {
@@ -88,7 +85,7 @@ const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
         </div>
         <div className="modal-content-right">
           <form className="form" onSubmit={updateRoutine}>
-          <h1>Update name of routine and/or goal below:</h1>
+            <h1>Update name of routine and/or goal below:</h1>
             <input
               type="text"
               className="modal-input"
@@ -106,7 +103,9 @@ const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
               }}
             />
 
-            <button className="add-modal-input-btn" type="submit" >Update Routine</button>
+            <button className="add-modal-input-btn" type="submit">
+              Update Routine
+            </button>
             <button
               className="closeModalButton"
               onClick={() => {

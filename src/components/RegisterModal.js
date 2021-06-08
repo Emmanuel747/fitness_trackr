@@ -2,46 +2,43 @@ import "./Modal.css";
 import img from "../assets/greenSquat-removebg.png";
 import { useState } from "react";
 import { Redirect, Link } from "react-router-dom";
-import { login, getToken } from '../auth'
-
+import { login, getToken } from "../auth";
 
 const RegisterModal = ({
-      loginClick,
-      setLoginClick,
-      registerClick,
-      setRegisterClick,
-      authenticate, 
-      setAuthentication, 
-      username, 
-      setUsername, 
-      token, 
-      setToken 
+  loginClick,
+  setLoginClick,
+  registerClick,
+  setRegisterClick,
+  authenticate,
+  setAuthentication,
+  username,
+  setUsername,
+  token,
+  setToken,
 }) => {
-   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
-   const [ password, setPassWord ] = useState();
-   const [ passwordConfirmation, setPassWordConfirmation ] = useState();
+  const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
+  const [password, setPassWord] = useState();
+  const [passwordConfirmation, setPassWordConfirmation] = useState();
 
   function createUser(event) {
     event.preventDefault();
     if (username && password && password === passwordConfirmation) {
-      fetch(
-        `${REACT_APP_FITNESS_TRACKER_API_URL}/api/users/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-              username: username,
-              password: password,
-          })
-        })
+      fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/users/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      })
         .then((response) => response.json())
         .then((result) => {
-          console.log(result)
+          console.log(result);
           login(result.token);
           setToken(getToken());
-          isLoggedIn(result)
+          isLoggedIn(result);
         })
         .catch(console.error);
     }
@@ -81,15 +78,15 @@ const RegisterModal = ({
         id="register-modal"
       >
         <div className="modal-content">
-          <span onClick={close_btn} className="close-btn">&times;</span>
+          <span onClick={close_btn} className="close-btn">
+            &times;
+          </span>
           <div className="modal-content-left">
             <img src={img} alt="Fitness Stats" id="modal-img" />
           </div>
           <div className="modal-content-right">
-            <form className="modal-form" id="form" onSubmit={ createUser }>
-              <h1>
-                This is a Modal for Logged in user
-              </h1>
+            <form className="modal-form" id="form" onSubmit={createUser}>
+              <h1>This is a Modal for Logged in user</h1>
               <div className="form-validation">
                 <input
                   type="text"

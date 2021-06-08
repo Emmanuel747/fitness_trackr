@@ -15,7 +15,7 @@ const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
     event.preventDefault();
 
     if (getToken() && authenticate) {
-      fetch("${REACT_APP_FITNESS_TRACKER_API_URL}/api/routines", {
+      fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/routines`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

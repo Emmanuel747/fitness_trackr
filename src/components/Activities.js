@@ -4,12 +4,12 @@ import { getToken } from "../auth";
 import CreateActivityForm from "./CreateActivityForm";
 import Image from "../assets/—Pngtree—physical fitness_2210737.png";
 // import { REACT_APP_FITNESS_TRACKER_API_URL } = process.env
-const {REACT_APP_FITNESS_TRACKER_API_URL} = process.env;
+const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
 
 const Activities = () => {
   const [activities, setActivities] = useState([]);
   useEffect(() => {
-    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}/api/activities`, {
+    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/activities`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,21 +27,19 @@ const Activities = () => {
         <div className="activities-container">
           <div className="activities-content">
             <h1> Activities </h1>
-            <p>
-              Find your an activity and just Do it!
-            </p>
+            <p>Find your an activity and just Do it!</p>
             <div className="activities-list-container">
-            {activities.map((activity, index) => {
-              return (
-                <section className="activities-list">
-                  <ul key={index}>
-                    <li>
-                      {activity.name} : {activity.description}
-                    </li>
-                  </ul>
-                </section>
-              );
-            })}
+              {activities.map((activity, index) => {
+                return (
+                  <section className="activities-list" key={index}>
+                    <ul>
+                      <li>
+                        {activity.name} : {activity.description}
+                      </li>
+                    </ul>
+                  </section>
+                );
+              })}
             </div>
           </div>
           <div className="activities-img-container">

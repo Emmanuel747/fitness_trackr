@@ -19,12 +19,12 @@ const UpdateActivityForm = ({
   const updateRoutineActivity = (event) => {
     event.preventDefault();
     fetch(
-      `${REACT_APP_FITNESS_TRACKER_API_URL}/api/routine_activities/${routineActivityId}`,
+      `${REACT_APP_FITNESS_TRACKER_API_URL}api/routine_activities/${routineActivityId}`,
       {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${getToken()}`,
+          "Authorization": `Bearer ${getToken()}`,
         },
         body: JSON.stringify({
           count: count,

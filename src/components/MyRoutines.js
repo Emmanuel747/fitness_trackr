@@ -6,8 +6,6 @@ import UpdateRoutineForm from "./UpdateRoutineForm";
 import AddActivityForm from "./AddActivityForm";
 import UpdateActivityForm from "./UpdateActivityForm";
 
-
-
 const MyRoutines = ({ username, setUsername, authenticate }) => {
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [routines, setRoutines] = useState([]);
@@ -24,7 +22,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
         const { username } = await responseUser.json();
         setUsername(username);
         const responseRoutines = await fetch(
-          `${REACT_APP_FITNESS_TRACKER_API_URL}users/${username}/routines`,
+          `${REACT_APP_FITNESS_TRACKER_API_URL}api/users/${username}/routines`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -32,6 +30,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
           }
         );
         const routines = await responseRoutines.json();
+        console.log(routines);
         setRoutines([...routines]);
         setId(routines.id);
       } catch (error) {
@@ -42,11 +41,13 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
   }, []);
 
   const deleteRoutine = (id) => {
-    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}/routines/${id}`, {
+    const token = getToken();
+    console.log(token, "THIS IS FROM DELETE FUNCTION");
+    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/routines/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${getToken()}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
@@ -61,16 +62,15 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
   };
 
   const deleteActivity = (id) => {
-    fetch(
-      `${REACT_APP_FITNESS_TRACKER_API_URL}/api/routine_activities/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${getToken()}`,
-        },
-      }
-    )
+    const token = getToken();
+    console.log(id);
+    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/routine_activities/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
@@ -79,6 +79,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
             return activity.id !== id;
           });
         });
+        console.log(newActivities);
         setRoutines(newActivities);
       })
       .catch(console.error);
@@ -106,14 +107,14 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
                   </ul>
                 </div>
                 {getToken() ? (
-                <AddRoutineForm
-                  authenticate={authenticate}
-                  routines={routines}
-                  setRoutines={setRoutines}
-                />
-              ) : null}
+                  <AddRoutineForm
+                    authenticate={authenticate}
+                    routines={routines}
+                    setRoutines={setRoutines}
+                  />
+                ) : null}
               </div>
-              
+
               <div className="profile-body">
                 <div className="my-routines-content">
                   {routines.map((routine, idx) => {

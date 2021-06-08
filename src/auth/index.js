@@ -11,15 +11,11 @@ export function logout() {
   localStorage.removeItem("FitTkrToken");
 }
 
-export function getUsername(){
-  return fetch(
-    `${REACT_APP_FITNESS_TRACKER_API_URL}/api/users/me`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${getToken()}`,
-      },
-    }
-  )
-    
+export function getUsername() {
+  return fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/users/me`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
 }

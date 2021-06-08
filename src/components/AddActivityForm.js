@@ -5,15 +5,15 @@ import Image2 from "../assets/badminton fitness little boy.png";
 Modal.setAppElement("#root");
 
 const AddActivityForm = ({ routineId, routines, setRoutines }) => {
-  const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env
-  const [ modalIsOpen, setModalIsOpen ] = useState(false);
-  const [ activities, setActivities ] = useState([]);
-  const [ activityId, setActivityId ] = useState();
-  const [ count, setCount]  = useState();
-  const [ duration, setDuration ] = useState();
+  const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [activities, setActivities] = useState([]);
+  const [activityId, setActivityId] = useState();
+  const [count, setCount] = useState();
+  const [duration, setDuration] = useState();
 
   useEffect(() => {
-    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}/api/activities`, {
+    fetch(`${REACT_APP_FITNESS_TRACKER_API_URL}api/activities`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getToken()}`,
@@ -29,7 +29,7 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
   function addActivityToRoutine(event) {
     event.preventDefault();
     fetch(
-      `${REACT_APP_FITNESS_TRACKER_API_URL}/api/routines/${routineId}/activities`,
+      `${REACT_APP_FITNESS_TRACKER_API_URL}api/routines/${routineId}/activities`,
       {
         method: "POST",
         headers: {
@@ -46,14 +46,15 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        setActivities([result])
+        setActivities([result]);
       })
       .catch(console.error);
   }
 
   return (
     <div>
-      <button className="my-routines-btn"
+      <button
+        className="my-routines-btn"
         onClick={(event) => {
           event.preventDefault();
           setModalIsOpen(true);
@@ -90,46 +91,50 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
         }}
         isOpen={modalIsOpen}
       >
-      <div className="add-modal-content-left">
+        <div className="add-modal-content-left">
           <img src={Image2} alt="Fitness Stats" id="modal-img" />
         </div>
         <div className="modal-content-right">
-        <form className="form" onSubmit={addActivityToRoutine}>
-          <label>Add Activity To Routine</label>
-          <select
-          className="modal-input"
-            onChange={(event) => {
-              setActivityId(event.target.value);
-            }}
-          >
-            <option> Select An Activity </option>
-            {activities.map((activity, idx) => {
-              return <option key={idx} value={activity.id}>{activity.name}</option>;
-            })}
-          </select>
+          <form className="form" onSubmit={addActivityToRoutine}>
+            <label>Add Activity To Routine</label>
+            <select
+              className="modal-input"
+              onChange={(event) => {
+                setActivityId(event.target.value);
+              }}
+            >
+              <option> Select An Activity </option>
+              {activities.map((activity, idx) => {
+                return (
+                  <option key={idx} value={activity.id}>
+                    {activity.name}
+                  </option>
+                );
+              })}
+            </select>
 
-          <label> Count: </label>
-          <input
-          className="modal-input"
-            onChange={(event) => {
-              setCount(Number(event.target.value));
-            }}
-          />
-          <label> Duration: </label>
-          <input
-          className="modal-input"
-            onChange={(event) => {
-              setDuration(Number(event.target.value));
-            }}
-          />
-          <button type="submit">Add Activity To Routine</button>
-          <button
-            className="closeModalButton"
-            onClick={() => setModalIsOpen(false)}
-          >
-            Close
-          </button>
-        </form>
+            <label> Count: </label>
+            <input
+              className="modal-input"
+              onChange={(event) => {
+                setCount(Number(event.target.value));
+              }}
+            />
+            <label> Duration: </label>
+            <input
+              className="modal-input"
+              onChange={(event) => {
+                setDuration(Number(event.target.value));
+              }}
+            />
+            <button type="submit">Add Activity To Routine</button>
+            <button
+              className="closeModalButton"
+              onClick={() => setModalIsOpen(false)}
+            >
+              Close
+            </button>
+          </form>
         </div>
       </Modal>
     </div>
