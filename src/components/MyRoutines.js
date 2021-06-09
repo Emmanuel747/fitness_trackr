@@ -14,7 +14,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
   const [activities, setActivities] = useState([]);
   const [id, setId] = useState("");
 
-  //Thiis needs the most work, Idk if the API is broken or my URL's are but I rushed through it.
+  //This needs the most work, Idk if the API is broken or my URL's are but I rushed through it.
   useEffect(() => {
     const getUserAndSetRoutines = async () => {
       try {
@@ -47,7 +47,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`
       },
     })
       .then((response) => response.json())
@@ -68,7 +68,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`
       },
     })
       .then((response) => response.json())
@@ -96,24 +96,11 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
               <div className="my-routines-header">
                 <div className="user-welcome">
                   <h1>
-                    {username}'s Workout - {currentDay}
+                    {username}'s Workout Routines - {currentDay}
                   </h1>
                 </div>
               </div>
-              <div className="my-routines-right">
-                <div className="nav">
-                  <ul>
-                    <li>My Routines</li>
-                  </ul>
-                </div>
-                {getToken() ? (
-                  <AddRoutineForm
-                    authenticate={authenticate}
-                    routines={routines}
-                    setRoutines={setRoutines}
-                  />
-                ) : null}
-              </div>
+              
 
               <div className="profile-body">
                 <div className="my-routines-content">
@@ -179,6 +166,19 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
                       </div>
                     );
                   })}
+                </div>
+              </div>
+              <div className="my-routines-right">
+                <div className="nav">
+                  { getToken() ? (
+                  <div className="nav"> 
+                    <AddRoutineForm
+                      authenticate={authenticate}
+                      routines={routines}
+                      setRoutines={setRoutines}
+                    />
+                  </div>
+                ) : null}
                 </div>
               </div>
             </div>

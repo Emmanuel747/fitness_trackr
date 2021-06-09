@@ -24,7 +24,7 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
         setActivities(result);
       })
       .catch(console.error);
-  }, []);
+  });
 
   function addActivityToRoutine(event) {
     event.preventDefault();
@@ -70,7 +70,7 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
             backgroundColor: "transparent",
             width: "60%",
             margin: "auto auto",
-            height: "500px",
+            height: "600px",         
           },
           content: {
             position: "absolute",
@@ -87,6 +87,7 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
             padding: "10px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
+            overflow: "none",
           },
         }}
         isOpen={modalIsOpen}
@@ -127,13 +128,17 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
                 setDuration(Number(event.target.value));
               }}
             />
-            <button type="submit">Add Activity To Routine</button>
-            <button
-              className="closeModalButton"
-              onClick={() => setModalIsOpen(false)}
-            >
-              Close
-            </button>
+            <div className="buttonContainer">
+              <button
+                className="RoutineBtn one" 
+                type="submit">Add Activity To Routine
+              </button>
+              <button
+                className="closeModalButton RoutineBtn two "
+                onClick={() => setModalIsOpen(false)}
+                >Close
+              </button>
+            </div>
           </form>
         </div>
       </Modal>

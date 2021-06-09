@@ -25,7 +25,7 @@ const Home = ({ registerClick, setRegisterClick }) => {
                   position: "relative",
                 }}
               >
-                Get Started
+                Get Started Today!
               </Link>
             </button>
           </div>

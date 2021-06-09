@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { logout, getToken } from '../auth';
+import { logout, getToken, getUsername } from '../auth';
 import Image from "../assets/favicon-32x32.png";
 
 
@@ -35,12 +35,12 @@ const ProfileNavbar = ({username, authenticate}) => {
             )}
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-                <h3 className="nav-user-welcome">THIS NEEDS WORK, {username}!</h3>
+            <li className="nav-item">
+                <h3 className="nav-user-welcome">Welcome back, {username}</h3>
             </li>
             <li className="nav-item">
               <Link to="/routines" className="nav-links">
-                <h3>My Routines</h3>
+                <h3>Public Routines</h3>
               </Link>
             </li>
             <li className="nav-item">
@@ -50,7 +50,7 @@ const ProfileNavbar = ({username, authenticate}) => {
             </li>
             <li className="nav-item">
               <Link to="/myroutines" className="nav-links">
-                <h3>Profile[Work in progress]</h3>
+                <h3>Profile</h3>
               </Link>
             </li>
             <li className="nav-item">

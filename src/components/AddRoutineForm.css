@@ -1,0 +1,80 @@
+#modal-img2 {
+   width: 50%;
+   height: 105%;
+   position: absolute;
+   top: 50%;
+   left: 30%;
+   transform: translate(-50%, -50%);
+}
+
+.modal-content-right {
+   display: flex;
+   align-items: center;
+
+}
+.modal-content-right h1 {
+   margin-bottom: 30px;
+}
+.inputContainer {
+   display: flex;
+   flex-direction: column;
+}
+.inputContainer input {
+   width: 100%;
+   margin-bottom: 10px;
+}
+
+.add-routine {
+   padding: 5px 15px;
+   width: 130%;
+   text-align: center;
+   transition: all 0.2s ease-in-out;
+   font-size: 1.5rem;
+   border: none;
+   border-radius: 4px;
+   background-color: var(--brightorange);
+   text-decoration: underline;
+   text-shadow: 5px 2px 5px rgba(66, 64, 64, 0.726);
+}
+.add-routine:hover {
+   transform: scale(1.1);
+}
+
+.add-routine:active {
+   transform: translateY(-10px);
+}
+
+.buttonContainer {
+   display: flex;
+   justify-content: space-between;
+   padding: 10px;
+}
+
+.RoutineBtn {
+   padding: 5px 15px;
+   width: 47%;
+   text-align: center;
+   transition: all 0.2s ease-in-out;
+   font-size: 1.5rem;
+   border: none;
+   border-radius: 4px;
+   background-color: var(--brightorange);
+   text-decoration:dotted;
+   text-shadow: 5px 2px 5px rgba(66, 64, 64, 0.726);
+   box-shadow: 0 4px #999;
+
+}
+.RoutineBtn.one{
+   background-color: green;
+}
+.RoutineBtn.two {
+   background-color: red
+}
+.RoutineBtn:hover {
+   transform: scale(0.95);
+}
+.RoutineBtn:active {
+   transform: scale(0.95);
+   box-shadow: 0 3px #666;
+   transform: translateY(4px);
+ }

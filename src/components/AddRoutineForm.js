@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import { getToken } from "../auth";
 import Modal from "react-modal";
 import Image2 from "../assets/badminton fitness little boy.png";
+import "./AddRoutineForm.css";
 Modal.setAppElement("#root");
 
 //still working on Needs CSS
@@ -50,9 +52,9 @@ const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
         onClick={(event) => {
           event.preventDefault();
           setModalIsOpen(true);
-        }}
-      >
-        ADD ROUTINE
+        }}>
+
+        Add New Routine
       </button>
       <Modal
         style={{
@@ -62,7 +64,7 @@ const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
             backgroundColor: "transparent",
             width: "60%",
             margin: "auto auto",
-            height: "500px",
+            height: "600px",
           },
           content: {
             position: "absolute",
@@ -84,37 +86,41 @@ const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
         isOpen={modalIsOpen}
       >
         <div className="add-modal-content-left">
-          <img src={Image2} alt="Fitness Stats" id="modal-img" />
+          <img src={Image2} alt="Fitness Stats" id="modal-img2" />
         </div>
         <div className="modal-content-right">
-          <form className="form" onSubmit={makeRoutine}>
-            <h1>Enter name of routine and goal below:</h1>
-            <input
-              type="text"
-              className="modal-input"
-              placeholder="Enter name of Routine"
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-            />
-            <input
-              type="text"
-              className="modal-input"
-              placeholder="Enter Goal"
-              onChange={(event) => {
-                setGoal(event.target.value);
-              }}
-            />
-            <button className="add-modal-input-btn" type="submit">
-              Create Routine
-            </button>
-            <button
-              className="closeModalButton"
-              onClick={() => setModalIsOpen(false)}
-            >
-              Close
-            </button>
-          </form>
+          <Form className="form" onSubmit={makeRoutine}>
+            <h1>Enter Routine name and goal below:</h1>
+            <div className="inputContainer">
+              <input
+                required
+                type="text"
+                className="modal-input"
+                placeholder="Enter name of Routine"
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              />
+              <input
+                required
+                type="text"
+                className="modal-input"
+                placeholder="Enter Goal"
+                onChange={(event) => {
+                  setGoal(event.target.value);
+                }}
+              />
+            </div>
+            <div className="buttonContainer">
+    
+              <button className="add-modal-input-btn RoutineBtn one" type="submit" >
+                Create Routine
+              </button>
+              <button className="closeModalButton RoutineBtn two" onClick={() => setModalIsOpen(false)}>
+                Close
+              </button>
+            </div>
+          </Form>
         </div>
       </Modal>
     </div>

@@ -38,7 +38,7 @@ const Navbar = ({ loginClick, setLoginClick, username }) => {
               </>
             )}
           </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
+          <ul className={click ? "nav-menu active" : "nav-menu"}> 
             <li className="nav-item">
               <Link to="/" className="nav-links">
                 <h3>Home</h3>
@@ -56,7 +56,7 @@ const Navbar = ({ loginClick, setLoginClick, username }) => {
             </li>
             {getToken() ? <li className="nav-item">
               <Link to="/myroutines" className="nav-links">
-                <h3>Profile[Work in progress]{username}</h3>
+                <h3>Profile</h3>
               </Link>
             </li> : null}
             {getToken() ? 

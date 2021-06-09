@@ -23,6 +23,9 @@
 
 .nav-user-welcome {
   color: var(--white);
+  text-shadow: 4px 2px 5px rgba(24, 223, 157, 0.822);
+  margin-right: 15px;
+  text-decoration: underline overline;
 }
 
 .navbar {
@@ -33,6 +36,7 @@
   width: 100%;
   max-width: 1720px;
   margin: 0 auto;
+  padding: 0px 20px 0px 10px;
 }
 
 .navbar-logo {
@@ -80,7 +84,7 @@
   border-radius: 4px;
   font-size: large;
   font-weight: bold;
-
+  margin-right: 10px;
 }
 
 .nav-links-btn:hover {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getToken } from "../auth";
 import Modal from "react-modal";
+import "./AddRoutineForm.css"
 import Image2 from "../assets/badminton fitness little boy.png";
 Modal.setAppElement("#root");
 
@@ -86,34 +87,36 @@ const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
         <div className="modal-content-right">
           <form className="form" onSubmit={updateRoutine}>
             <h1>Update name of routine and/or goal below:</h1>
-            <input
-              type="text"
-              className="modal-input"
-              placeholder="Enter name of Routine"
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-            />
-            <input
-              type="text"
-              className="modal-input"
-              placeholder="Enter Goal"
-              onChange={(event) => {
-                setGoal(event.target.value);
-              }}
-            />
-
-            <button className="add-modal-input-btn" type="submit">
-              Update Routine
-            </button>
-            <button
-              className="closeModalButton"
-              onClick={() => {
-                setModalIsOpen(false);
-              }}
-            >
-              Close
-            </button>
+            <div className="inputContainer">
+              <input
+                type="text"
+                className="modal-input"
+                placeholder="Enter name of Routine"
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              />
+              <input
+                type="text"
+                className="modal-input"
+                placeholder="Enter Goal"
+                onChange={(event) => {
+                  setGoal(event.target.value);
+                }}
+              />
+            </div>
+            <div className="buttonContainer">
+              <button className="add-modal-input-btn RoutineBtn one" type="submit">
+                Update Routine
+              </button>
+              <button
+                className="closeModalButton RoutineBtn two"
+                onClick={() => {
+                  setModalIsOpen(false);
+                }}>
+                Close
+              </button>
+            </div>
           </form>
         </div>
       </Modal>

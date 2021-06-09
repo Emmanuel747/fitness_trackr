@@ -18,6 +18,8 @@
 .main {
   background-image: url('../assets/Relaxition.jpg');
   background-size: 100vw 100vh;
+  border-image:stretch ;
+  overflow: hidden;
 }
 
 .main-container {
@@ -37,19 +39,28 @@
   text-shadow: 2px 2px 5px black;
   color: var(--white);
   width: 80%;
+  transform: translateY(100px);
+  text-align: center;
 }
 
 .main-content h1 {
   font-size: 3.5rem;
+  text-shadow: 7px 3px 7px rgb(0 0 0 / 74%);
+  background-color: rgb(26 25 25 / 76%);
+  padding: 5px;
+  color: rgba(231, 83, 113, 0.952);
 }
 
 .main-content p {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
+  text-shadow: 7px 3px 7px rgb(0 0 0 / 74%);
+  background-color: rgb(26 25 25 / 76%);
+  padding: 5px;
+  color: rgba(97, 230, 157, 0.952);
 }
 
 .main-btn {
-  margin-left: 40%;
   align-self: center;
   font-size: 1rem;
   background-color: #F35361;
