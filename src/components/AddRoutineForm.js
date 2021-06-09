@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { getToken } from "../auth";
 import Modal from "react-modal";
 import Image2 from "../assets/badminton fitness little boy.png";
 import "./AddRoutineForm.css";
 Modal.setAppElement("#root");
 
-//still working on Needs CSS
 const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -31,16 +30,14 @@ const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
       })
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
           if (result.error) {
             alert("routine exists");
           }
           const newRoutines = [...routines];
-          console.log(newRoutines, "line 28");
           newRoutines.push(result);
           setRoutines(newRoutines);
-          console.log(newRoutines);
         })
+        .then(setModalIsOpen(false))
         .catch(console.error);
     }
   };
@@ -73,7 +70,7 @@ const AddRoutineForm = ({ routines, setRoutines, authenticate }) => {
             right: "40px",
             bottom: "40px",
             background: "rgb(201, 199, 255)",
-            overflow: "auto",
+            overflow: "none",
             WebkitOverflowScrolling: "touch",
             border: "3px solid var(--darkerpurple)",
             borderRadius: "5px",

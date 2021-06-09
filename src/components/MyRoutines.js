@@ -9,12 +9,9 @@ import UpdateActivityForm from "./UpdateActivityForm";
 const MyRoutines = ({ username, setUsername, authenticate }) => {
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [routines, setRoutines] = useState([]);
-  const [routinesActive, setRoutinesActive] = useState(true);
-  const [activitiesActive, setActivitiesActive] = useState(false);
   const [activities, setActivities] = useState([]);
   const [id, setId] = useState("");
 
-  //This needs the most work, Idk if the API is broken or my URL's are but I rushed through it.
   useEffect(() => {
     const getUserAndSetRoutines = async () => {
       try {
@@ -38,7 +35,7 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
       }
     };
     getUserAndSetRoutines();
-  }, []);
+  });
 
   const deleteRoutine = (id) => {
     const token = getToken();
@@ -79,7 +76,6 @@ const MyRoutines = ({ username, setUsername, authenticate }) => {
             return activity.id !== id;
           });
         });
-        console.log(newActivities);
         setRoutines(newActivities);
       })
       .catch(console.error);

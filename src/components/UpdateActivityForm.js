@@ -7,7 +7,6 @@ Modal.setAppElement("#root");
 
 const UpdateActivityForm = ({
   routines,
-  setRoutines,
   routineActivityId,
   setActivities,
 }) => {
@@ -34,7 +33,6 @@ const UpdateActivityForm = ({
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         const updatedActivityInfo = routines.map((routine) => {
           routine.activities.map((activity) => {
             if (activity.id === routineActivityId) {
@@ -45,6 +43,7 @@ const UpdateActivityForm = ({
         });
         setActivities(updatedActivityInfo);
       })
+      .then(setModalIsOpen(false))
       .catch(console.error);
     event.target.reset();
   };
@@ -52,7 +51,7 @@ const UpdateActivityForm = ({
   return (
     <div>
       <button
-        className="my-routines-btn"
+        className="my-routines-btn special"
         onClick={(event) => {
           event.preventDefault();
           setModalIsOpen(true);
@@ -90,7 +89,7 @@ const UpdateActivityForm = ({
         isOpen={modalIsOpen}
       >
         <div className="add-modal-content-left">
-          <img src={Image2} alt="Fitness Stats" id="modal-img" />
+          <img src={Image2} alt="Fitness Stats" id="modal-img2" />
         </div>
         <div className="modal-content-right">
           <form className="form" onSubmit={updateRoutineActivity}>

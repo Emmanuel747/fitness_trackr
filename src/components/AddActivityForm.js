@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { getToken } from "../auth";
 import Image2 from "../assets/badminton fitness little boy.png";
+import "./AddRoutineForm.css"
 Modal.setAppElement("#root");
 
-const AddActivityForm = ({ routineId, routines, setRoutines }) => {
+const AddActivityForm = ({ routineId }) => {
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [activities, setActivities] = useState([]);
@@ -45,9 +46,9 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setActivities([result]);
       })
+      .then(setModalIsOpen(false))
       .catch(console.error);
   }
 
@@ -79,7 +80,7 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
             right: "40px",
             bottom: "40px",
             background: "rgb(201, 199, 255)",
-            overflow: "auto",
+            overflow: "none",
             WebkitOverflowScrolling: "touch",
             border: "3px solid var(--darkerpurple)",
             borderRadius: "5px",
@@ -87,13 +88,12 @@ const AddActivityForm = ({ routineId, routines, setRoutines }) => {
             padding: "10px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            overflow: "none",
           },
         }}
         isOpen={modalIsOpen}
       >
         <div className="add-modal-content-left">
-          <img src={Image2} alt="Fitness Stats" id="modal-img" />
+          <img src={Image2} alt="Fitness Stats" id="modal-img2" />
         </div>
         <div className="modal-content-right">
           <form className="form" onSubmit={addActivityToRoutine}>

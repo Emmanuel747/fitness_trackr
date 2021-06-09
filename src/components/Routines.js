@@ -1,9 +1,8 @@
 import "./Routines.css";
 import { useState, useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
-import { getToken, getUsername } from "../auth";
+import { getUsername } from "../auth";
 
-const Routines = ({ authenticate, username, setUsername }) => {
+const Routines = ({ setUsername }) => {
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [routines, setRoutines] = useState([]);
 
@@ -11,7 +10,6 @@ const Routines = ({ authenticate, username, setUsername }) => {
     getUsername()
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setUsername(result.username);
       })
       .catch(console.error);
@@ -23,11 +21,10 @@ const Routines = ({ authenticate, username, setUsername }) => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setRoutines(result);
       })
       .catch(console.error);
-  }, []);
+  });
 
   return (
     <>

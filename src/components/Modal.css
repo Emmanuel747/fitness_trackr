@@ -67,15 +67,15 @@
   position: relative;
 }
 
-/* #modal-img {
-  width: 80%;
-  height: 80%;
+#modal-img {
+  width: 90%;
+  height: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-} */
-#modal-img {
+}
+#modal-img2 {
   width: 50%;
   height: 105%;
   position: absolute;
@@ -114,6 +114,9 @@
   width: 80%;
 }
 
+label {
+  font-size: large;
+}
 .modal-input {
   display: block;
   padding-left: 0.5rem;
@@ -124,6 +127,7 @@
   width: 100%;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
   font-family: 'Roboto', sans-serif;
+  font-size: larger;
 }
 
 .modal-input::placeholder {

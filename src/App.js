@@ -10,19 +10,19 @@ import {
   Routines,
   Activities,
   ProfileNavbar,
-  // AddRoutineForm,
-  // UpdateRoutineForm,
-  // CreateActivityForm
 } from "./components";
 import { getToken, getUsername } from "./auth";
 
 function App() {
-  // const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [registerClick, setRegisterClick] = useState(false);
   const [loginClick, setLoginClick] = useState(false);
   const [authenticate, setAuthentication] = useState(false);
   const [token, setToken] = useState("");
   const [username, setUsername] = useState();
+
+  useEffect(() => {
+    document.title = `Fitness TrackR\u2122`;
+  }, []);
 
   useEffect(() => {
     if (getToken()) {

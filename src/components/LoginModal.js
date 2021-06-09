@@ -18,6 +18,7 @@ const LoginModal = ({
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [password, setPassword] = useState();
   const [loginSuccessful, setLoginSuccessful] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function authentication(event) {
     event.preventDefault();
@@ -33,27 +34,28 @@ const LoginModal = ({
     })
       .then(
         (response) => response.json(),
-        console.log(token, username, password)
       )
 
       .then((result) => {
-        console.log(result);
         login(result.token);
         setToken(getToken());
         isLoggedIn(result);
       })
-      .catch(console.error);
+      .then(setModalIsOpen(false))
+      .catch(
+        setModalIsOpen(true),
+        console.error);
+
   }
 
   const isLoggedIn = (result) => {
     if (result) {
-      console.log("is logged in");
       setAuthentication(true);
       setLoginSuccessful(true);
       //Need something cleaner than alerts
       alert(result.message);
     } else {
-      console.log("not logged in");
+      setModalIsOpen(true)
       alert(result.error.message);
     }
   };

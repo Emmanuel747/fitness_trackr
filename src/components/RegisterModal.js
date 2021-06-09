@@ -1,7 +1,7 @@
 import "./Modal.css";
 import img from "../assets/greenSquat-removebg.png";
 import { useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { login, getToken } from "../auth";
 
 const RegisterModal = ({
@@ -9,16 +9,15 @@ const RegisterModal = ({
   setLoginClick,
   registerClick,
   setRegisterClick,
-  authenticate,
   setAuthentication,
   username,
   setUsername,
-  token,
   setToken,
 }) => {
   const { REACT_APP_FITNESS_TRACKER_API_URL } = process.env;
   const [password, setPassWord] = useState();
   const [passwordConfirmation, setPassWordConfirmation] = useState();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function createUser(event) {
     event.preventDefault();
@@ -40,7 +39,11 @@ const RegisterModal = ({
           setToken(getToken());
           isLoggedIn(result);
         })
-        .catch(console.error);
+        .then(registerClick = true)
+        .then(setModalIsOpen(false))
+        .catch(
+          alert('Bad Account Info, please try again'),
+          console.error);
     }
   }
 
@@ -53,10 +56,6 @@ const RegisterModal = ({
       console.log("not logged in");
     }
   };
-
-  // if (token) {
-  //   return <Redirect to="/myroutines" />;
-  // }
 
   window.addEventListener("click", (event) => {
     if (event.target === document.getElementById("register-modal")) {
@@ -86,9 +85,10 @@ const RegisterModal = ({
           </div>
           <div className="modal-content-right">
             <form className="modal-form" id="form" onSubmit={createUser}>
-              <h1>This is a Modal for Logged in user</h1>
+              <h1>"Every Epic Journey begins with 1 step"</h1>
               <div className="form-validation">
                 <input
+                  required
                   type="text"
                   className="modal-input"
                   id="username"
@@ -101,6 +101,7 @@ const RegisterModal = ({
               </div>
               <div className="form-validation">
                 <input
+                  required
                   type="password"
                   className="modal-input"
                   id="password"
@@ -113,6 +114,7 @@ const RegisterModal = ({
               </div>
               <div className="form-validation">
                 <input
+                  required
                   type="password"
                   className="modal-input"
                   id="password_confirm"

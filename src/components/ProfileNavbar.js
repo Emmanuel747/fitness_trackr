@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { logout, getToken, getUsername } from '../auth';
+import { logout } from '../auth';
 import Image from "../assets/favicon-32x32.png";
 
 

@@ -30,9 +30,7 @@ const CreateActivityForm = ({ activities, setActivities }) => {
         }
         const activityCopy = [...activities];
         const newActivities = activityCopy.push(result);
-        console.log(newActivities);
         setActivities(newActivities);
-        // console.log(result);
       })
       .catch(console.error);
   }
@@ -65,7 +63,7 @@ const CreateActivityForm = ({ activities, setActivities }) => {
             right: "40px",
             bottom: "40px",
             background: "rgb(201, 199, 255)",
-            overflow: "auto",
+            overflow: "none",
             WebkitOverflowScrolling: "touch",
             border: "3px solid var(--darkerpurple)",
             borderRadius: "5px",

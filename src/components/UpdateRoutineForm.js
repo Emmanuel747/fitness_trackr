@@ -37,6 +37,7 @@ const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
           setRoutines(updatedRoutine);
         }
       })
+      .then(setModalIsOpen(false))
       .catch(console.error);
     event.target.reset();
   };
@@ -60,7 +61,7 @@ const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
             backgroundColor: "transparent",
             width: "60%",
             margin: "auto auto",
-            height: "500px",
+            height: "600px",
           },
           content: {
             position: "absolute",
@@ -70,7 +71,7 @@ const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
             bottom: "40px",
             border: "3px solid var(--darkerpurple)",
             background: "rgb(201, 199, 255)",
-            overflow: "auto",
+            overflow: "none",
             WebkitOverflowScrolling: "touch",
             borderRadius: "5px",
             outline: "none",
@@ -82,7 +83,7 @@ const UpdateRoutineForm = ({ routines, setRoutines, routineId }) => {
         isOpen={modalIsOpen}
       >
         <div className="add-modal-content-left">
-          <img src={Image2} alt="Fitness Stats" id="modal-img" />
+          <img src={Image2} alt="Fitness Stats" id="modal-img2" />
         </div>
         <div className="modal-content-right">
           <form className="form" onSubmit={updateRoutine}>
